@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Android-touchlib by stevenkaras</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Android-touchlib</h1>
+        <p>Dead simple touch gesture library for Android</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/stevenkaras/Android-TouchLib" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/stevenkaras/Android-TouchLib/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/stevenkaras/Android-TouchLib/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>TouchLib</h1>
+
+<p>TouchLib is a basic UX library that provides a modular/minimalist approach towards gesture recognition. The basic version of the library provides several built-in gestures:</p>
+
+<ul>
+<li>Tap</li>
+<li>Long tap</li>
+<li>Drag</li>
+<li>Pinch</li>
+</ul><p>More gestures can be added, as described in the section below (Adding new gestures).</p>
+
+<h2>Development</h2>
+
+<p>If you're interested in helping development, just fork this project. I won't pull your changes, since I'd prefer for the code to remain solely mine.</p>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2011 Steven Karas</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+<h2>History</h2>
+
+<p>Touchlib came about because Android lacks a builtin library (or any open source library) for quick and easy gesture recognition. While Android does include a "Gesture" library, it does not work with a multitouch Pinch gesture, nor does it provide ongoing information about a gesture, such as the location, duration, or other such information. When the information is available, it is hidden behind cumbersome APIs that impose a significant performance hit.</p>
+
+<p>As such, I sat down one weekend and built TouchLib to handle some basic gestures that I needed for a game. The first version was fugly, but it worked. Then I sat down a few days later, and came up with a sane design. A little bit of javadoc later, and I'm here, writing this document at 330am. Yay!</p>
+
+<h2>Integrating with your application</h2>
+
+<p>To use this library, you'll need to forward all MotionEvents to the GestureManager in the onTouchEvent(MotionEvent) method of your View. GestureManager provides a default instance, but you can maintain your own, if you'd like. Maintaining multiple GestureManagers is not supported (it should be possible, but I just haven't tried it/thought it through). In addition, you'll want to add a listener for the gesture events. BaseGestureListener provides a default implementation of GestureListener, which does nothing. That way, you can override only the events you care about. In addition, it funnels all the gesture lifecycle events into a simple event (so onStartDrag, onMidDrag, and onEndDrag all call onDrag by default).</p>
+
+<p>The example project provides a reference for how to utilize the library in a semi-sane manner.</p>
+
+<p>Paid support is provided upon request. Donations via paypal are also welcome.</p>
+
+<h2>Adding new gestures</h2>
+
+<p>If you'd like to add a new gesture, you'll need to first write a new processor that extends GestureProcessor. The handle* methods should be overridden to handle the various MotionEvent types. Then you'll need to add a new entry to the GestureType enum, and finally a new instance to the GestureManager. Once you've done all that, you'll need to tell the existing processors when to pass control over to your processor.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/stevenkaras">stevenkaras</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
